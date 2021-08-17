@@ -4,9 +4,10 @@
 
 # Session Data files
 .RData
-
+.DS_Store
 # User-specific files
 .Ruserdata
+.Rbuildignore
 
 # Example code in package build process
 *-Ex.R
@@ -37,3 +38,4 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+.Rproj.user
