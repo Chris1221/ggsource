@@ -1,2 +1,3 @@
-# plotcheck
-Checkpoint plots from within R 
+# ggsource 
+
+Recover source code from saved plot PDFs.

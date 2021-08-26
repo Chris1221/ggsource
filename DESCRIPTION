@@ -1,5 +1,5 @@
-Package: plotcheck
-Title: What the Package Does (One Line, Title Case)
+Package: ggsource
+Title: Save plot source in PDF metadata 
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "First",
