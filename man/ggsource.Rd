@@ -4,10 +4,12 @@
 \alias{ggsource}
 \title{Recover the source code used to create a plot.}
 \usage{
-ggsource(filename)
+ggsource(filename, interactive = T)
 }
 \arguments{
 \item{filename}{Path to PDF plot generated with ggsource::ggsave.}
+
+\item{interactive}{If TRUE, return raw file name. If FALSE, try to use rstudioapi to open the file.}
 }
 \value{
 Either opens the file in Rstudio or prints the path.A

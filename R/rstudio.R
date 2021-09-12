@@ -37,6 +37,7 @@ ggsave <- function(filename, plot, cleanup = T, scriptname = NULL, ...){
 #' Recover the source code used to create a plot.
 #'
 #' @param filename Path to PDF plot generated with ggsource::ggsave.
+#' @param interactive If TRUE, return raw file name. If FALSE, try to use rstudioapi to open the file.
 #' @importFrom glue glue
 #' @importFrom rstudioapi isAvailable navigateToFile
 #' @importFrom magrittr %>%

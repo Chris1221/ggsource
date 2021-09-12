@@ -4,7 +4,7 @@
 \alias{check_exiftool}
 \title{A simple check for exiftool}
 \usage{
-check_exiftool()
+check_exiftool(toolname = "exiftool")
 }
 \description{
 Ideally this is not breaking, i.e. does not cause an error immediately. The behaviour of ggsave should default to ggplot2::ggsave if exiftool is not available, because we don't want to disturb the workflow unncessasarily.
