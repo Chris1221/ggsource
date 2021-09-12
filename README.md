@@ -64,10 +64,6 @@ PDF is a very flexible document format. It supports the addition of arbitrary ta
 
 No. Only PDF.
 
-> Will this work outside of RStudio?
-
-You can use this outside of RStudio to associate the name of any file to the PDF, but the current functionality for actually opening the plot is restricted to RStudio. I have plans to make this a more general solution, opening the file in `$EDITOR` when you're in a command line environment, for example.
-
 > ExifTool is not installing correctly, can you help?
 
 No. There is extensive documentation on how to install the program [here](https://exiftool.org/).
