@@ -1,4 +1,4 @@
-# ggsource 
+# ggsource [![CircleCI](https://circleci.com/gh/Chris1221/ggsource/tree/main.svg?style=svg)](https://circleci.com/gh/Chris1221/ggsource/tree/main)
 
 Recover source code from exported PDFs. Use `ggsource::ggsave` instead of `ggplot2::ggsave`, and you can use `ggsource::ggsource` to quickly re-open whatever file was used to generate the plot in Rstudio.
 
