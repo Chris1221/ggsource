@@ -13,6 +13,8 @@ library(ggsource)
 
 > Note: The package intentionally masks `ggplot2::ggsave`. There's no reason to use `ggplot2::ggsave` if you're using `ggsource`, as the export functionality is the same and, on error, `ggsource` defaults to `ggplot2::ggsave` anyway.
 
+You must also install `ExifTool` if it not already installed on your system. See [here](https://exiftool.org/install.html) for how to do that. 
+
 ## Usage
 
 ### Step 1: Open a file in RStudio and create a plot
