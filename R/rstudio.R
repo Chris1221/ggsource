@@ -1,5 +1,3 @@
-# Requires exiftool
-
 #' Save a PDF plot along with the name of the file used to create it.
 #' @param filename Destination to save the plot. Must be a PDF.
 #' @param plot GGplot object to save.
