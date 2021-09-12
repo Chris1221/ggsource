@@ -12,7 +12,9 @@
 ggsave <- function(filename, plot, cleanup = T, scriptname = NULL, ...){
   ggplot2::ggsave(filename, plot, ...)
 
-  if(rstudioapi::isAvailable()){
+  check_exiftool()
+
+  if(rstudioapi::isAvailable() & is.null(scriptname)){
     path = rstudioapi::getSourceEditorContext()$path
     path_to_config = system.file("extdata", "pcsave.cfg", package = "ggsource", mustWork = T)
     system(glue("exiftool -config {path_to_config} -ScriptPath={path} {filename}"))
@@ -21,12 +23,12 @@ ggsave <- function(filename, plot, cleanup = T, scriptname = NULL, ...){
     path_to_config = system.file("extdata", "pcsave.cfg", package = "ggsource", mustWork = T)
     system(glue("exiftool -config {path_to_config} -ScriptPath={path} {filename}"))
   } else {
-    print("It looks like you aren't using RStudio and you haven't provided a scriptname.\n\n I've saved your plot, but haven't included the filename in it. See the documentation")
+    stop("It looks like you aren't using RStudio and you haven't provided a scriptname.\n\n I've saved your plot, but haven't included the filename in it. See the documentation")
   }
 
   if(cleanup){
-    if(file.exists(glue({"filename}_original"))){
-
+    if(file.exists(glue("{filename}_original"))){
+      file.remove(glue("{filename}_original"))
     }
   }
 
@@ -41,15 +43,18 @@ ggsave <- function(filename, plot, cleanup = T, scriptname = NULL, ...){
 #'
 #' @return Either opens the file in Rstudio or prints the path.A
 #' @export
-ggsource <- function(filename) {
+ggsource <- function(filename, interactive = T) {
+
+  check_exiftool()
+
   path = system(glue("exiftool -ScriptPath {filename}"), intern = T) %>%
     strsplit(" +") %>%
     unlist %>%
     tail(n = 1)
 
-  if(rstudioapi::isAvailable()){
+  if(rstudioapi::isAvailable() & interactive){
     rstudioapi::navigateToFile(path)
-  } else{
-    print(glue("Your plot was created from {path}"))
+  } else {
+    return(path)
   }
 }
