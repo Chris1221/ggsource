@@ -2,7 +2,7 @@
 
 Recover source code from exported PDFs. Use `ggsource::ggsave` instead of `ggplot2::ggsave`, and you can use `ggsource::ggsource` to quickly re-open whatever file was used to generate the plot in Rstudio.
 
-![Example](https://github.com/Chris1221/chris1221.github.io/raw/master/assets/img/ggsource_example.gif)
+https://user-images.githubusercontent.com/8516981/132992508-0dd4ee74-10e4-4d60-b80b-9918bab9535c.mp4
 
 ## 🛠️ Installation 
 
