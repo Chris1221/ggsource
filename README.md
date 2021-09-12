@@ -2,8 +2,6 @@
 
 Recover source code from exported PDFs. Use `ggsource::ggsave` instead of `ggplot2::ggsave`, and you can use `ggsource::ggsource` to quickly re-open whatever file was used to generate the plot in Rstudio.
 
-**This is currently ONLY coded to work within the Rstudio framework, assuming that the `rstudioapi` is available. A more complete solution will be available when I have time to clean it up.**
-
 ## Installation 
 
 ```{r}
@@ -17,31 +15,42 @@ You must also install `ExifTool` if it not already installed on your system. See
 
 ## Usage
 
-### Step 1: Open a file in RStudio and create a plot
+The default way of using `ggsource` is within RStudio. You won't need to specify any additional arguments, and `ggsource::ggsave` will function as a drop in replacement of `ggplot2::ggsave` with the additional benefit of being able to use `ggsource::ggsource` to re-open the file. 
+
+However, you can also customise the package to your particular set up, whether or not it revolves around the rstudioapi. 
+
+#### Option 1: Within RStudio
+
+Open a file (`my_plot.R`) in RStudio and create a plot. Save it using `ggsource::ggsave` (which will automatically mask `ggplot2::ggsave`).
 
 `my_plot.R`: 
 
-```{r}
+```{R}
 library(ggplot2)
 p = ggplot(mpg, aes(displ, hwy, colour = class)) + 
   geom_point()
-```
-
-### Step 2: Save the plot with `ggsource`
-
-```{r}
-library(ggsource) # will mask ggplot2::ggsave
 
 ggsave("my_plot.pdf", p)
 ```
 
-### Step 3: Source the file used to create the plot
+Now at any point in the future, you can re-open `my_plot.R` with `ggsource`. 
 
-```{r}
+```{R}
 ggsource("my_plot.pdf")
 ```
 
 This will open `my_plot.R` in RStudio.
+
+#### Option 2: Outside of RStudio
+
+`ggsource::ggsave` uses the `rstudioapi` to automatically detect the open file path. To override this, you can specify the scriptname (or arbitrary string, `ggsource::ggsave` doesn't care) that you want to save within the PDF. `ggsource::ggsource` will then just return the path that you gave it in the first place. 
+
+```{R}
+ggsave("my_plot.pdf", p, scriptname = "my_plot.R")
+ggsource("my_plot.pdf", interactive = FALSE)
+```
+
+Will return `my_plot.R`. 
 
 ## FAQ
 
